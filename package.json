@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "student registration",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepakyadav-01/Student_Registration.git"
+  },
+  "author": "deepak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deepakyadav-01/Student_Registration/issues"
+  },
+  "homepage": "https://github.com/deepakyadav-01/Student_Registration#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.3.0",
+    "nodemon": "^3.0.3",
+    "require": "^2.4.20",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "mongoose": "^8.1.0"
+  }
+}
