@@ -32,7 +32,7 @@ export const editStudent = async (req, res) => {
         message: "student not found",
       });
     }
-
+// give a variable for update  using spread
     // Update student's information
     const editedStudent = await Student.findByIdAndUpdate(
       studentId,
@@ -45,6 +45,7 @@ export const editStudent = async (req, res) => {
         gender: gender || employee.gender,
         address: address || employee.address,
       },
+      // check this 
       { new: true }
     );
 

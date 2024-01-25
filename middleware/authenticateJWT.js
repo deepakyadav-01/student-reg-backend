@@ -1,12 +1,12 @@
-import jwt from 'jsonwebtoken';
-import authStudent from '../model/authStudent.js';
+import jwt from "jsonwebtoken";
+import authStudent from "../model/authStudent.js";
 import dotenv from "dotenv"; // Load environment variables from .env file
 dotenv.config();
 const authenticateJWT = async (req, res, next) => {
-  const token = req.header('Authorization');
+  const token = req.header("Authorization");
 
   if (!token) {
-    return res.status(401).json({ error: 'Unauthorized - Missing Token' });
+    return res.status(401).json({ error: "Unauthorized - Missing Token" });
   }
 
   try {
@@ -14,7 +14,7 @@ const authenticateJWT = async (req, res, next) => {
     const student = await authStudent.findById(decoded.userId);
 
     if (!student) {
-      return res.status(401).json({ error: 'Unauthorized - Invalid Token' });
+      return res.status(401).json({ error: "Unauthorized - Invalid Token" });
     }
 
     // Attach the authenticated user to the request object
@@ -26,7 +26,7 @@ const authenticateJWT = async (req, res, next) => {
     // Continue to the next middleware or route handler
     next();
   } catch (error) {
-    return res.status(401).json({ error: 'Unauthorized - Invalid Token' });
+    return res.status(401).json({ error: "Unauthorized - Invalid Token" });
   }
 };
 
