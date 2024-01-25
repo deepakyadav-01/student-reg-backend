@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon --experimental-modules --es-module-specifier-resolution=node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"npm i"
+    "build": "npm i"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/deepakyadav-01/Student_Registration#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "build": "^0.1.4",
     "cors": "^2.8.5",
     "dotenv": "^16.3.2",
