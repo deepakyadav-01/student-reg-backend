@@ -1,5 +1,5 @@
 import express from "express";
-import authenticateJWT from "../middleware/authenticateJWT.js";
+import { authenticateJWT } from "../middleware/authenticateJWT.js";
 import {
   registerStudent,
   loginStudent,

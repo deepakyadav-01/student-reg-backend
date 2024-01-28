@@ -1,8 +1,10 @@
 import jwt from "jsonwebtoken";
+import createHttpError from "http-errors";
+
 import authStudent from "../model/authStudent.js";
-import dotenv from "dotenv"; // Load environment variables from .env file
-dotenv.config();
-const authenticateJWT = async (req, res, next) => {
+import User from "../model/User.js";
+
+export const authenticateJWT = async (req, res, next) => {
   const token = req.header("Authorization");
 
   if (!token) {
@@ -30,4 +32,20 @@ const authenticateJWT = async (req, res, next) => {
   }
 };
 
-export default authenticateJWT;
+export const authenticateRole = (role) => async (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    if (!token) throw createHttpError(401, "Token not found");
+
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decodedToken.userId);
+    if (!user) throw createHttpError(404, "User not found");
+
+    if (user.role !== role) throw createHttpError(403, "Access forbidden");
+
+    req.userData = decodedToken;
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
