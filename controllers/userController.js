@@ -14,7 +14,7 @@ export const login = async (req, res, next) => {
     if (!isMatch) throw createHttpError(401, "Invalid credentials");
 
     const token = createToken(user);
-    res.status(200).json({ token });
+    res.status(200).json({ token ,role:user.role, user:user.username });
   } catch (error) {
     next(error);
   }
